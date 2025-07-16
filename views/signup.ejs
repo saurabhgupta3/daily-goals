@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign-up Page</title>
+    </head>
+    <body>
+        <h2>Please signup</h2>
+        <form action="/signup" method="post">
+            <input type="text" placeholder="enter username" name="username">
+            <br>
+            <br>
+            <input type="password" placeholder="enter password" name="password">
+            <br><br>
+            <button>submit</button>
+        </form>
+
+         <% if (typeof duplicate !== 'undefined' && duplicate) { %>
+        <script>
+            alert("Username already exists!");
+            window.location.href = "/signup"; // Refresh page after alert
+        </script>
+        <% } else if(typeof duplicate !== "undefined" && !duplicate){ %>
+            <script>
+                alert("some error ocurred");
+                window.location.href = "/signup";
+            </script>
+        <% } %>
+    </body>
+</html>

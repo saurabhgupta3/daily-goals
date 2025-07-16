@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Welcome <%=username%></h1>
+        <form action="/add" method="get">
+            <input type="hidden" name="username" value="<%=username%>" />
+            <button>add</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th style="display: flex; gap: 10px;"><form action="/record" method="get">
+                            <%let total = 0;%>
+                            <% let cnt = 0; %>
+                            <% for(let data of allData) {%>
+                                <% if(data.check) { %>
+                                    <% cnt++; %>
+                                <% }%>
+                                <% total++; %>
+                            <%}%>
+                            <% let percentage = (cnt/total) * 100; %>
+                            <input type="hidden" name="percentage" value="<%= percentage %>">
+                            <input type="hidden" name="username" value="<%= username %>">
+                            <button>record</button>
+                        </form>
+                        <form action="/details" method="get">
+                            <input type="hidden" name="username" value="<%= username %>">
+                            <button>details</button>
+                        </form>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(let data of allData) {%>
+                <tr>
+                    <td><%=data.title%></td>
+                    <td><%=data.description%></td>
+                    <td>
+                        <form action="/update" method="POST">
+                            <input type="hidden" name="username", value="<%= username %>">
+                            <input type="hidden" name="_id" value="<%=data._id%>">
+                            <input type="checkbox" name="check"
+                            onchange="this.form.submit()" <%= data.check ?
+                            'checked' : '' %> >
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/delete?_method=delete" method="post">
+                            <input type="hidden" name="_id" value="<%= data._id %>">
+                            <input type="hidden" name="username", value="<%= username %>">
+                            <button>delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <%}%>
+            </tbody>
+        </table>
+    </body>
+</html>

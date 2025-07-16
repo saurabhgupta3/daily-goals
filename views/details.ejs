@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>All Records</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h2>All Records of <%= username %></h2>
+        <table>
+            <thead>
+                <th>Date</th>
+                <th>Percentage</th>
+            </thead>
+            <tbody>
+                <% for(let record of allRecords) { %>
+                <tr>
+                    <td><%= record.date %></td>
+                    <td><%= record.percentage %>%</td>
+                    <td>
+                        <form action="/remove?_method=delete" method="post">
+                            <input type="hidden" name="username" id="" value="<%=username%>">
+                            <input type="hidden" name="_id" value="<%= record._id %>">
+                            <button>remove</button>
+                        </form>
+                    </td>
+                </tr>
+                <%}%>
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Enter the date</title>
+    </head>
+    <body>
+        <h1>Please enter the date : </h1>
+        <form action="/record" method="post">
+            <input type="hidden" name="percentage" value="<%= percentage %>">
+            <input type="hidden" name="username" value="<%= username %>">
+            <input type="text" placeholder="dd/mm/yyyy" name="date">
+            <button>submit</button>
+        </form>
+    </body>
+</html>
