@@ -28,6 +28,7 @@
                                 <% total++; %>
                             <%}%>
                             <% let percentage = (cnt/total) * 100; %>
+                            <% percentage = Math.ceil(percentage) %>
                             <input type="hidden" name="percentage" value="<%= percentage %>">
                             <input type="hidden" name="username" value="<%= username %>">
                             <button>record</button>
