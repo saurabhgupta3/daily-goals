@@ -14,3 +14,12 @@ th, td {
 thead {
   background-color: #f0f0f0;
 }
+.alerthai {
+  color:darkred;
+}
+.para {
+  color: green;
+}
+.para2 {
+  color: darkolivegreen;
+}
